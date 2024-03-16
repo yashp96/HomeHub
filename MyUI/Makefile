@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = MyUI1.0.0
-DISTDIR = /home/yash/WorkSpace/MyUI/.tmp/MyUI1.0.0
+DISTDIR = /mnt/hgfs/Git/HomeHub/HomeHub/MyUI/.tmp/MyUI1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/usr/local/Qt-6.6.2/lib -Wl,-rpath-link,/usr/local/Qt-6.6.2/lib
 LIBS          = $(SUBLIBS) /usr/local/Qt-6.6.2/lib/libQt6Widgets.so /usr/local/Qt-6.6.2/lib/libQt6Gui.so /usr/local/Qt-6.6.2/lib/libQt6Mqtt.so /usr/local/Qt-6.6.2/lib/libQt6Network.so /usr/local/Qt-6.6.2/lib/libQt6Core.so -lpthread -lGLX -lOpenGL   
@@ -1160,9 +1160,13 @@ moc_myui.cpp: myui.h \
 		/usr/local/Qt-6.6.2/include/QtGui/QTransform \
 		/usr/local/Qt-6.6.2/include/QtCore/qnativeinterface.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/QPushButton \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QDebug \
 		moc_predefs.h \
 		/usr/local/Qt-6.6.2/libexec/moc
-	/usr/local/Qt-6.6.2/libexec/moc $(DEFINES) --include /home/yash/WorkSpace/MyUI/moc_predefs.h -I/usr/local/Qt-6.6.2/mkspecs/linux-g++ -I/home/yash/WorkSpace/MyUI -I/usr/local/Qt-6.6.2/include -I/usr/local/Qt-6.6.2/include/QtWidgets -I/usr/local/Qt-6.6.2/include/QtGui -I/usr/local/Qt-6.6.2/include/QtMqtt -I/usr/local/Qt-6.6.2/include/QtNetwork -I/usr/local/Qt-6.6.2/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include myui.h -o moc_myui.cpp
+	/usr/local/Qt-6.6.2/libexec/moc $(DEFINES) --include /mnt/hgfs/Git/HomeHub/HomeHub/MyUI/moc_predefs.h -I/usr/local/Qt-6.6.2/mkspecs/linux-g++ -I/mnt/hgfs/Git/HomeHub/HomeHub/MyUI -I/usr/local/Qt-6.6.2/include -I/usr/local/Qt-6.6.2/include/QtWidgets -I/usr/local/Qt-6.6.2/include/QtGui -I/usr/local/Qt-6.6.2/include/QtMqtt -I/usr/local/Qt-6.6.2/include/QtNetwork -I/usr/local/Qt-6.6.2/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include myui.h -o moc_myui.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1349,6 +1353,10 @@ main.o: main.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtGui/QTransform \
 		/usr/local/Qt-6.6.2/include/QtCore/qnativeinterface.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/QPushButton \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QDebug \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QApplication \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qapplication.h \
 		/usr/local/Qt-6.6.2/include/QtCore/qcoreapplication.h \
@@ -1537,6 +1545,10 @@ myui.o: myui.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtGui/QTransform \
 		/usr/local/Qt-6.6.2/include/QtCore/qnativeinterface.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/QPushButton \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-6.6.2/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QDebug \
 		ui_myui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myui.o myui.cpp
 

@@ -53,6 +53,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -65,6 +81,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -79,6 +111,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -91,6 +139,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -105,6 +169,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -117,6 +197,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -131,6 +227,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -143,6 +255,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -157,6 +285,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -169,6 +313,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
@@ -183,6 +343,22 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
+    </property>
     <property name="text">
      <string>PushButton</string>
     </property>
@@ -195,6 +371,22 @@
       <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	font: 10pt &quot;Ubuntu&quot;;
+}
+
+QPushButton:Pressed
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(85, 170, 255);
+	font: 10pt &quot;Ubuntu&quot;;
+	text-decoration:underline;
+}</string>
     </property>
     <property name="text">
      <string>PushButton</string>
