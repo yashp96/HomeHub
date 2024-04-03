@@ -99,6 +99,10 @@ void MyUI::BottomKeyCallback()
     // change stacked widget page index
     ui->MyUiMainStack->setCurrentIndex(GetMainStackPgIndex(keyNum));
 
+    //
+    //  TODO: first implement your own class for keycontrol ONLY then proceed *****
+    //
+
     // change bottom key marker
     // update other UI elements
 
