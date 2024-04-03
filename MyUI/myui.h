@@ -1,24 +1,17 @@
-#ifndef MYUI_H
+        #ifndef MYUI_H
 #define MYUI_H
 
 #include <QMainWindow>
 #include <QPushButton>
 #include <QDebug>
+#include <QLabel>
+
+#include "enums.h"
+#include "defines.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MyUI; }
 QT_END_NAMESPACE
-
-#define MAIN_MENUS_MAX_NUMBER    4   /* Max number of menus at home page*/
-
-#define MAX_NUMBER_OF_KEYS  12
-#define MAX_LHS_KEYS        4
-#define MAX_RHS_KEYS        4
-#define MAX_BOTTOM_KEYS     4
-
-#define LHS_KEYS_OFFSET     (0)
-#define BOTTOM_KEYS_OFFSET  (MAX_LHS_KEYS)
-#define RHS_KEYS_OFFSET     (MAX_LHS_KEYS + MAX_RHS_KEYS)
 
 class MyUI : public QMainWindow
 {
@@ -31,18 +24,24 @@ public:
 private:
     Ui::MyUI *ui;
 
-    QString MainKeysText[MAIN_MENUS_MAX_NUMBER] = { "HOME", "EXPLORE", "DEVICES", "SETTINGS" };
+    QString MainKeysText[MAIN_MENUS_MAX_NUMBER] = { "HOME", "EXPLORE", "DEVICES", "SETTINGS" }; // we will consider bottom row as main keys
 
     QPushButton* AllKeys[MAX_NUMBER_OF_KEYS];
     QPushButton* LHSKeys[MAX_LHS_KEYS];
+    QPushButton* BottomSideKeys[MAX_BOTTOM_KEYS];
     QPushButton* RHSKeys[MAX_RHS_KEYS];
-    QPushButton* BottomKeys[MAX_BOTTOM_KEYS];
 
-/** @brief This function initializes the list for keys available on UI
- *
- *  @return err
-*/
+    QLabel* BottomKeyMarkers[MAX_BOTTOM_KEYS];
+
     bool InitializeKeyLists();
+    void InitializeKeySockets();
+    void LoadBottomKeyMarkers();
 
+    int GetMainStackPgIndex(eDisplayKeys_t  key);
+
+private slots:
+    void LHSKeyCallback();
+    void RHSKeyCallback();
+    void BottomKeyCallback();
 };
 #endif // MYUI_H
