@@ -17,4 +17,30 @@
 #define DEVICES_PAGE_INDEX  2
 #define SETTINGS_PAGE_INDEX 3
 
+#define DEVICE_NAME_MAX_LEN 32U
+#define DEVICE_DATA_BUFFER_MAX_LEN  128U
+
+#define NODE_ADVERTISE_LISTEN_PORT  6969
+
+#define MAX_DEVICES_SUPPORTED   64
+
+//
+//  data buffer indices
+//
+#define DEVICE_FUNC_CODE    0
+#define DEVICE_TYPE         1
+#define DEVICE_FW_VERSION   2
+#define DEVICE_RADIO_MODE   3
+#define DEVICE_ID_INDEX     4
+
+
+typedef unsigned char uint8_t;
+//typedef char int8_t;
+
+typedef unsigned short  uint16_t;
+typedef short int16_t;
+
+typedef unsigned int DeviceID;
+typedef uint8_t DeviceType;
+
 #endif // DEFINES_H

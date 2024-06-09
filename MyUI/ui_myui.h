@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -29,7 +30,7 @@ public:
     QWidget *pgExplore;
     QLabel *label_2;
     QWidget *PgDevices;
-    QLabel *label_3;
+    QFrame *FrameDevPg;
     QWidget *PgSettings;
     QLabel *label_4;
     QPushButton *pbFunction_1;
@@ -79,9 +80,11 @@ public:
         MyUiMainStack->addWidget(pgExplore);
         PgDevices = new QWidget();
         PgDevices->setObjectName("PgDevices");
-        label_3 = new QLabel(PgDevices);
-        label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(290, 170, 58, 18));
+        FrameDevPg = new QFrame(PgDevices);
+        FrameDevPg->setObjectName("FrameDevPg");
+        FrameDevPg->setGeometry(QRect(10, 10, 580, 480));
+        FrameDevPg->setFrameShape(QFrame::StyledPanel);
+        FrameDevPg->setFrameShadow(QFrame::Raised);
         MyUiMainStack->addWidget(PgDevices);
         PgSettings = new QWidget();
         PgSettings->setObjectName("PgSettings");
@@ -345,7 +348,6 @@ public:
         MyUI->setWindowTitle(QCoreApplication::translate("MyUI", "MyUI", nullptr));
         label->setText(QCoreApplication::translate("MyUI", "home", nullptr));
         label_2->setText(QCoreApplication::translate("MyUI", "explore", nullptr));
-        label_3->setText(QCoreApplication::translate("MyUI", "devices", nullptr));
         label_4->setText(QCoreApplication::translate("MyUI", "settings", nullptr));
         pbFunction_1->setText(QCoreApplication::translate("MyUI", "PushButton", nullptr));
         pbFunction_2->setText(QCoreApplication::translate("MyUI", "PushButton", nullptr));

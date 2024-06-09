@@ -43,16 +43,20 @@ constexpr auto qt_meta_stringdata_CLASSMyUIENDCLASS = QtMocHelpers::stringData(
     "LHSKeyCallback",
     "",
     "RHSKeyCallback",
-    "BottomKeyCallback"
+    "BottomKeyCallback",
+    "DeviceAdvBroadcastRxd",
+    "GUIUpdaerCallback"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMyUIENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[14];
     char stringdata0[5];
     char stringdata1[15];
     char stringdata2[1];
     char stringdata3[15];
     char stringdata4[18];
+    char stringdata5[22];
+    char stringdata6[18];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMyUIENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -62,13 +66,17 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMyUIENDCLASS_t qt_meta_stringda
         QT_MOC_LITERAL(5, 14),  // "LHSKeyCallback"
         QT_MOC_LITERAL(20, 0),  // ""
         QT_MOC_LITERAL(21, 14),  // "RHSKeyCallback"
-        QT_MOC_LITERAL(36, 17)   // "BottomKeyCallback"
+        QT_MOC_LITERAL(36, 17),  // "BottomKeyCallback"
+        QT_MOC_LITERAL(54, 21),  // "DeviceAdvBroadcastRxd"
+        QT_MOC_LITERAL(76, 17)   // "GUIUpdaerCallback"
     },
     "MyUI",
     "LHSKeyCallback",
     "",
     "RHSKeyCallback",
-    "BottomKeyCallback"
+    "BottomKeyCallback",
+    "DeviceAdvBroadcastRxd",
+    "GUIUpdaerCallback"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -80,7 +88,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMyUIENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -88,11 +96,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMyUIENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x08,    1 /* Private */,
-       3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    0,   34,    2, 0x08,    3 /* Private */,
+       1,    0,   44,    2, 0x08,    1 /* Private */,
+       3,    0,   45,    2, 0x08,    2 /* Private */,
+       4,    0,   46,    2, 0x08,    3 /* Private */,
+       5,    0,   47,    2, 0x08,    4 /* Private */,
+       6,    0,   48,    2, 0x08,    5 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -114,6 +126,10 @@ Q_CONSTINIT const QMetaObject MyUI::staticMetaObject = { {
         // method 'RHSKeyCallback'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'BottomKeyCallback'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'DeviceAdvBroadcastRxd'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'GUIUpdaerCallback'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -128,6 +144,8 @@ void MyUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 0: _t->LHSKeyCallback(); break;
         case 1: _t->RHSKeyCallback(); break;
         case 2: _t->BottomKeyCallback(); break;
+        case 3: _t->DeviceAdvBroadcastRxd(); break;
+        case 4: _t->GUIUpdaerCallback(); break;
         default: ;
         }
     }
@@ -153,13 +171,13 @@ int MyUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

@@ -53,11 +53,15 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ControlKeys.cpp \
+		ControlKeysHelper/keycontrol.cpp \
 		main.cpp \
-		myui.cpp moc_myui.cpp
+		myui.cpp moc_keycontrol.cpp \
+		moc_myui.cpp
 OBJECTS       = ControlKeys.o \
+		keycontrol.o \
 		main.o \
 		myui.o \
+		moc_keycontrol.o \
 		moc_myui.o
 DIST          = /usr/local/Qt-6.6.2/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-6.6.2/mkspecs/common/unix.conf \
@@ -348,9 +352,12 @@ DIST          = /usr/local/Qt-6.6.2/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-6.6.2/mkspecs/features/exceptions.prf \
 		/usr/local/Qt-6.6.2/mkspecs/features/yacc.prf \
 		/usr/local/Qt-6.6.2/mkspecs/features/lex.prf \
-		MyUI.pro defines.h \
+		MyUI.pro ControlKeysHelper/keycontrol.h \
+		defines.h \
 		enums.h \
-		myui.h ControlKeys.cpp \
+		myui.h \
+		structures.h ControlKeys.cpp \
+		ControlKeysHelper/keycontrol.cpp \
 		main.cpp \
 		myui.cpp
 QMAKE_TARGET  = MyUI
@@ -971,8 +978,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/local/Qt-6.6.2/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents defines.h enums.h myui.h $(DISTDIR)/
-	$(COPY_FILE) --parents ControlKeys.cpp main.cpp myui.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ControlKeysHelper/keycontrol.h defines.h enums.h myui.h structures.h $(DISTDIR)/
+	$(COPY_FILE) --parents ControlKeys.cpp ControlKeysHelper/keycontrol.cpp main.cpp myui.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents myui.ui $(DISTDIR)/
 
 
@@ -1005,9 +1012,114 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/local/Qt-6.6.2/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /usr/local/Qt-6.6.2/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_myui.cpp
+compiler_moc_header_make_all: moc_keycontrol.cpp moc_myui.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_myui.cpp
+	-$(DEL_FILE) moc_keycontrol.cpp moc_myui.cpp
+moc_keycontrol.cpp: ControlKeysHelper/keycontrol.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QObject \
+		/usr/local/Qt-6.6.2/include/QtCore/qobject.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qnamespace.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qglobal.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtversionchecks.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtconfiginclude.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qconfig.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtcore-config.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtconfigmacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtcoreexports.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtdeprecationmarkers.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtpreprocessorsupport.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qassert.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtnoop.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtypes.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtversion.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtclasshelpermacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlogging.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qflags.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompare_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qconstructormacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qdarwinhelpers.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qexceptionhandling.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qforeach.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qttypetraits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfunctionpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmalloc.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qminmax.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qnumeric.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qoverload.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qswap.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtenvironmentvariables.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtresource.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qttranslation.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtmetamacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfunctionaltools_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstring.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qchar.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearray.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qrefcount.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydata.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qpair.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydatapointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydataops.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainertools_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qxptype_traits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20functional.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20memory.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearrayalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearrayview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringfwd.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20type_traits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringliteral.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlatin1stringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qanystringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qutf8stringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringtokenizer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiterator.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringlist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmetatype.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompare.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qdatastream.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiodevicebase.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfloat16.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmath.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiterable.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmetacontainer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainerinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtaggedpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qscopeguard.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbindingstorage.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QMap \
+		/usr/local/Qt-6.6.2/include/QtCore/qmap.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qshareddata.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qshareddata_impl.h \
+		moc_predefs.h \
+		/usr/local/Qt-6.6.2/libexec/moc
+	/usr/local/Qt-6.6.2/libexec/moc $(DEFINES) --include /mnt/hgfs/Git/HomeHub/HomeHub/MyUI/moc_predefs.h -I/usr/local/Qt-6.6.2/mkspecs/linux-g++ -I/mnt/hgfs/Git/HomeHub/HomeHub/MyUI -I/usr/local/Qt-6.6.2/include -I/usr/local/Qt-6.6.2/include/QtWidgets -I/usr/local/Qt-6.6.2/include/QtGui -I/usr/local/Qt-6.6.2/include/QtMqtt -I/usr/local/Qt-6.6.2/include/QtNetwork -I/usr/local/Qt-6.6.2/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ControlKeysHelper/keycontrol.h -o moc_keycontrol.cpp
+
 moc_myui.cpp: myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qmainwindow.h \
@@ -1181,8 +1293,16 @@ moc_myui.cpp: myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qframe.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qpicture.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qtextdocument.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkglobal.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetwork-config.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkexports.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qhostaddress.h \
 		enums.h \
 		defines.h \
+		structures.h \
 		moc_predefs.h \
 		/usr/local/Qt-6.6.2/libexec/moc
 	/usr/local/Qt-6.6.2/libexec/moc $(DEFINES) --include /mnt/hgfs/Git/HomeHub/HomeHub/MyUI/moc_predefs.h -I/usr/local/Qt-6.6.2/mkspecs/linux-g++ -I/mnt/hgfs/Git/HomeHub/HomeHub/MyUI -I/usr/local/Qt-6.6.2/include -I/usr/local/Qt-6.6.2/include/QtWidgets -I/usr/local/Qt-6.6.2/include/QtGui -I/usr/local/Qt-6.6.2/include/QtMqtt -I/usr/local/Qt-6.6.2/include/QtNetwork -I/usr/local/Qt-6.6.2/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include myui.h -o moc_myui.cpp
@@ -1381,8 +1501,16 @@ ControlKeys.o: ControlKeys.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qframe.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qpicture.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qtextdocument.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkglobal.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetwork-config.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkexports.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qhostaddress.h \
 		enums.h \
 		defines.h \
+		structures.h \
 		ui_myui.h \
 		/usr/local/Qt-6.6.2/include/QtCore/QVariant \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QApplication \
@@ -1411,6 +1539,109 @@ ControlKeys.o: ControlKeys.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qstackedwidget.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ControlKeys.o ControlKeys.cpp
+
+keycontrol.o: ControlKeysHelper/keycontrol.cpp ControlKeysHelper/keycontrol.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QObject \
+		/usr/local/Qt-6.6.2/include/QtCore/qobject.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qnamespace.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qglobal.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtversionchecks.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtconfiginclude.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qconfig.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtcore-config.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtconfigmacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtcoreexports.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtdeprecationmarkers.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtpreprocessorsupport.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qassert.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtnoop.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtypes.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtversion.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtclasshelpermacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlogging.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qflags.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompare_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qconstructormacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qdarwinhelpers.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qexceptionhandling.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qforeach.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qttypetraits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfunctionpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmalloc.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qminmax.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qnumeric.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qoverload.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qswap.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtenvironmentvariables.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtresource.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qttranslation.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtmetamacros.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfunctionaltools_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstring.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qchar.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearray.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qrefcount.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydata.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qpair.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydatapointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qarraydataops.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainertools_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qxptype_traits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20functional.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20memory.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearrayalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearrayview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringfwd.h \
+		/usr/local/Qt-6.6.2/include/QtCore/q20type_traits.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringliteral.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlatin1stringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qanystringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qutf8stringview.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringtokenizer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qlist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiterator.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringlist.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmetatype.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcompare.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qdatastream.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiodevicebase.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qfloat16.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmath.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qiterable.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qmetacontainer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qcontainerinfo.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qtaggedpointer.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qscopeguard.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qbindingstorage.h \
+		/usr/local/Qt-6.6.2/include/QtCore/QMap \
+		/usr/local/Qt-6.6.2/include/QtCore/qmap.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qshareddata.h \
+		/usr/local/Qt-6.6.2/include/QtCore/qshareddata_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keycontrol.o ControlKeysHelper/keycontrol.cpp
 
 main.o: main.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QMainWindow \
@@ -1585,8 +1816,16 @@ main.o: main.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qframe.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qpicture.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qtextdocument.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkglobal.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetwork-config.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkexports.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qhostaddress.h \
 		enums.h \
 		defines.h \
+		structures.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QApplication \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qapplication.h \
 		/usr/local/Qt-6.6.2/include/QtCore/qcoreapplication.h \
@@ -1784,8 +2023,16 @@ myui.o: myui.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qframe.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qpicture.h \
 		/usr/local/Qt-6.6.2/include/QtGui/qtextdocument.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkglobal.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetwork-config.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qtnetworkexports.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-6.6.2/include/QtNetwork/qhostaddress.h \
 		enums.h \
 		defines.h \
+		structures.h \
 		ui_myui.h \
 		/usr/local/Qt-6.6.2/include/QtCore/QVariant \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QApplication \
@@ -1814,6 +2061,9 @@ myui.o: myui.cpp myui.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/qstackedwidget.h \
 		/usr/local/Qt-6.6.2/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myui.o myui.cpp
+
+moc_keycontrol.o: moc_keycontrol.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_keycontrol.o moc_keycontrol.cpp
 
 moc_myui.o: moc_myui.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_myui.o moc_myui.cpp

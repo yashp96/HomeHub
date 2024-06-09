@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     ControlKeys.cpp \
+    ControlKeysHelper/keycontrol.cpp \
     main.cpp \
     myui.cpp
 
 HEADERS += \
+    ControlKeysHelper/keycontrol.h \
     defines.h \
     enums.h \
-    myui.h
+    myui.h \
+    structures.h
 
 FORMS += \
     myui.ui
